@@ -1,13 +1,36 @@
 <?php
-include_once("autoload.php");
+include_once("index.php");
+include_once("./helpers/validator.php");
 
-$email = isset($_POST['email']) ? $_POST['email'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
-$action = isset($_POST['action']) ? $_POST['action'] : '';
+$name = validate(isset($_POST['name']) ? $_POST['name'] : '');
+$email = validate(isset($_POST['email']) ? $_POST['email'] : '');
+$password = validate(isset($_POST['password']) ? $_POST['password'] : '');
+$action = validate(isset($_POST['action']) ? $_POST['action'] : '');
 
 
 if ($action == 'signin') {
     $signin = new Login;
 
-   // var_dump($signin);
+    $signin = new Login;
+
+    $data = [
+        "email" => $email,
+        "password" => $password
+    ];
+
+    $signin->handler($data);
+    header('location: home.php');
+}
+
+if ($action === 'signup') {
+    $signup = new Register;
+    $data = [
+        "name" => $name,
+        "email" => $email,
+        "password" => $password
+    ];
+
+    $signup->handler($data);
+
+    header("location: login.php");
 }
