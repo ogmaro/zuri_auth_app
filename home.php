@@ -2,9 +2,9 @@
 include_once("./layouts/header.php");
 ?>
 <?php
-var_dump($_SESSION['name'])
+echo ("Welcome " . $_SESSION['name']) . " ";
 ?>
-
+<a href="logout.php"> Logout</a>
 <?php
 include_once("./layouts/footer.php");
 ?>

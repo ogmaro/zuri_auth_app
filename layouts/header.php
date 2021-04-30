@@ -1,4 +1,6 @@
-<?php include_once("index.php") ?>
+<?php
+session_start();
+include_once("index.php") ?>
 <!doctype html>
 <html lang="en">
 
